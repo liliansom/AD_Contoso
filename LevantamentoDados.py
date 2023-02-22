@@ -11,8 +11,7 @@ class Dados:
     def buscar_dados(self): 
         self.sql = 'SELECT TOP 10 * FROM FactSales'
         self.dados = sql.read_sql(self.sql, self.conn)
-        dados1 = self.dados.head(10)
-        print(f'{dados1}')
+        self.dados
 
                             
 dados = Dados()
