@@ -1,8 +1,9 @@
 from LevantamentoDados import LevDados
-
+from conexao import ConexaoBD
 def main():
-busca = Levdados()
-nova_tabela = busca.analisar_tabela()
-
+    busca = Levdados()
+    busca.analisar_vendas()
+    
 if __init__ == __main__:
     main()
+    
