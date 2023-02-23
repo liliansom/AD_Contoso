@@ -27,14 +27,16 @@ class Levdados:
         tabela1 = self.buscar_vendas()
         tabela2 = self.buscar_lojas()
         nova_tabela = tabela1.merge(tabela2, on="StoreKey")
-        display(nova_tabela)
         return nova_tabela
 
     def analisar_tabela(self):
         tabela3 = self.juntar_tabelas()
         self.vendas_lojas = tabela3.groupby('StoreName').sum()
         self.vendas_lojas = self.vendas_lojas[['SalesQuantity']].sort_values('SalesQuantity', ascending=False)
-        self.max = self.vendas_lojas['SalesQuantity'].max()
-        self,max[:5].plot(kind='bar')
+        self.vendas_lojas[:5].plot(figsize=(15,5), kind='bar')
+        plt.xticks(rotation=350)
         plt.show()
-        return self.max
+        return self.vendas_lojas
+
+busca = Levdados()
+nova_tabela = busca.analisar_tabela()
