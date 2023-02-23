@@ -3,11 +3,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from pandas.io import sql
 import pyodbc
-from conexao import Retornar_conexao
+from conexao import ConexaoBD
 
 class Levdados:
     def __init__(self):
-        self.con = Retornar_conexao()
+        self.con = ConexaoBD()
         self.conn = self.con.conexao()
         
     def buscar_vendas(self): 
@@ -29,14 +29,17 @@ class Levdados:
         nova_tabela = tabela1.merge(tabela2, on="StoreKey")
         return nova_tabela
 
-    def analisar_tabela(self):
+    def analisar_vendas(self):
         tabela3 = self.juntar_tabelas()
         self.vendas_lojas = tabela3.groupby('StoreName').sum()
         self.vendas_lojas = self.vendas_lojas[['SalesQuantity']].sort_values('SalesQuantity', ascending=False)
         self.vendas_lojas[:5].plot(figsize=(15,5), kind='bar')
         plt.xticks(rotation=350)
         plt.show()
+        self.conn.close()
         return self.vendas_lojas
 
+"""busca = Levdados()
+nova_tabela = busca.analisar_tabela()"""
 busca = Levdados()
-nova_tabela = busca.analisar_tabela()
+busca.analisar_vendas()
