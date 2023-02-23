@@ -30,3 +30,11 @@ class Levdados:
         display(nova_tabela)
         return nova_tabela
 
+    def analisar_tabela(self):
+        tabela3 = self.juntar_tabelas()
+        self.vendas_lojas = tabela3.groupby('StoreName').sum()
+        self.vendas_lojas = self.vendas_lojas[['SalesQuantity']].sort_values('SalesQuantity', ascending=False)
+        self.max = self.vendas_lojas['SalesQuantity'].max()
+        self,max[:5].plot(kind='bar')
+        plt.show()
+        return self.max
