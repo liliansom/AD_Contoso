@@ -23,4 +23,10 @@ class Levdados:
         lista_lojas = self.dados_lojas      
         return lista_lojas         
 
+    def juntar_tabelas(self):
+        tabela1 = self.buscar_vendas()
+        tabela2 = self.buscar_lojas()
+        nova_tabela = tabela1.merge(tabela2, on="StoreKey")
+        display(nova_tabela)
+        return nova_tabela
 
