@@ -1,11 +1,10 @@
 import pyodbc
 
-class Retornar_conexao:
+class ConexaoBD:
     def conexao(self):
         dadosconex= "Driver={SQL Server};Server=.;Database=ContosoRetailDW;"
         conexao = pyodbc.connect(dadosconex)
         return conexao
-    
 
     
     
