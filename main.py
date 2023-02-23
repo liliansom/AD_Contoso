@@ -1,8 +1,8 @@
-from LevantamentoDados import Dados
+from LevantamentoDados import LevDados
 
 def main():
-    dados = Dados()
-    dados.buscar_dados()
+busca = Levdados()
+nova_tabela = busca.analisar_tabela()
 
 if __init__ == __main__:
     main()
