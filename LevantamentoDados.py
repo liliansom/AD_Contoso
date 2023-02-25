@@ -23,14 +23,17 @@ class Levdados:
         lista_lojas = self.dados_lojas      
         return lista_lojas         
 
-    def juntar_tabelas(self):
-        tabela1 = self.buscar_vendas()
-        tabela2 = self.buscar_lojas()
-        nova_tabela = tabela1.merge(tabela2, on="StoreKey")
+    def mesclar_tabelas(self, tabela1, tabela2, parametro):
+        self.tabela1 = tabela1
+        self.tabela2 = tabela2
+        self.parametro = parametro
+        nova_tabela = tabela1.merge(tabela2, on=parametro)
         return nova_tabela
 
     def analisar_vendas(self):
-        tabela3 = self.juntar_tabelas()
+        lista_vendas = self.buscar_vendas()
+        lista_lojas = self.buscar_lojas()
+        tabela3 = self.mesclar_tabelas(lista_vendas, lista_lojas, 'StoreKey')
         self.vendas_lojas = tabela3.groupby('StoreName').sum()
         self.vendas_lojas = self.vendas_lojas[['SalesQuantity']].sort_values('SalesQuantity', ascending=False)
         self.vendas_lojas[:5].plot(figsize=(15,5), kind='bar')
@@ -39,7 +42,5 @@ class Levdados:
         self.conn.close()
         return self.vendas_lojas
 
-"""busca = Levdados()
-nova_tabela = busca.analisar_tabela()"""
 busca = Levdados()
 busca.analisar_vendas()
