@@ -28,15 +28,15 @@ class Levdados:
         self.produtos = 'SELECT * FROM DimProduct'
         self.dados_produtos = pd.read_sql(self.produtos, self.conn)
         lista_colunas_produtos = ['ProductKey', 'ProductSubcategoryKey']
-        lista_produtos = self.dados_produtos[lista_colunas_produtos]
+        self.lista_produtos = self.dados_produtos[lista_colunas_produtos]
 
         self.subcat = 'SELECT * FROM  DimProductSubCategory'
         self.dados_subcat = pd.read_sql(self.subcat, self.conn)
         lista_colunas_subcat = ['ProductSubcategoryKey', 'ProductSubcategoryName']
-        lista_subcat = self.dados_subcat[lista_colunas_subcat]
+        self.lista_subcat = self.dados_subcat[lista_colunas_subcat]
 
-        lista_prodcat = self.mesclar_tabelas(lista_produtos, lista_subcat, 'ProductSubcategoryKey')
-        return lista_produtos
+        lista_prodcat = self.mesclar_tabelas(self.lista_produtos, self.lista_subcat, 'ProductSubcategoryKey')
+        return lista_prodcat
 
     def mesclar_tabelas(self, tabela1, tabela2, parametro):
         self.tabela1 = tabela1
@@ -60,4 +60,5 @@ class Levdados:
 
 
 busca = Levdados()
-busca.analisar_vendas()
+busca.buscar_produtos()
+print(busca.buscar_produtos())
