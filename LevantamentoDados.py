@@ -13,15 +13,30 @@ class Levdados:
     def buscar_vendas(self): 
         self.vendas = 'SELECT * FROM FactSales'
         self.dados_vendas = pd.read_sql(self.vendas, self.conn)
-        lista_colunas_vendas = ['StoreKey', 'SalesQuantity']
+        lista_colunas_vendas = ['StoreKey', 'SalesQuantity', 'ProductKey']
         lista_vendas = self.dados_vendas[lista_colunas_vendas]
         return lista_vendas
         
     def buscar_lojas(self):
-        self.lojas = 'SELECT StoreKey, StoreName FROM DimStore'
+        self.lojas = 'SELECT * FROM DimStore'
         self.dados_lojas = pd.read_sql(self.lojas, self.conn)
-        lista_lojas = self.dados_lojas      
+        lista_colunas_lojas = ['StoreKey', 'StoreName']
+        lista_lojas = self.dados_lojas[lista_colunas_lojas]   
         return lista_lojas         
+
+    def buscar_produtos(self):
+        self.produtos = 'SELECT * FROM DimProduct'
+        self.dados_produtos = pd.read_sql(self.produtos, self.conn)
+        lista_colunas_produtos = ['ProductKey', 'ProductSubcategoryKey']
+        lista_produtos = self.dados_produtos[lista_colunas_produtos]
+
+        self.subcat = 'SELECT * FROM  DimProductSubCategory'
+        self.dados_subcat = pd.read_sql(self.subcat, self.conn)
+        lista_colunas_subcat = ['ProductSubcategoryKey', 'ProductSubcategoryName']
+        lista_subcat = self.dados_subcat[lista_colunas_subcat]
+
+        lista_prodcat = self.mesclar_tabelas(lista_produtos, lista_subcat, 'ProductSubcategoryKey')
+        return lista_produtos
 
     def mesclar_tabelas(self, tabela1, tabela2, parametro):
         self.tabela1 = tabela1
@@ -41,6 +56,8 @@ class Levdados:
         plt.show()
         self.conn.close()
         return self.vendas_lojas
+
+
 
 busca = Levdados()
 busca.analisar_vendas()
