@@ -1,7 +1,7 @@
 from ClasseBusca import Busca
 
 # Classe para analisar as informações do BD
-class Analise:
+class Analisar:
     def __init__(self):
         self.dados = Busca()
 
@@ -11,7 +11,7 @@ class Analise:
         tabela_lojas = self.dados.buscar_lojas()
         tabela3 = self.dados.mesclar_tabelas(tabela_vendas, tabela_lojas, 'StoreKey')
         self.vendas_lojas = tabela3.groupby('StoreName').sum()
-        self.vendas_lojas = self.vendas_lojas[['SalesQuantity']].sort_values('SalesQuantity', ascending=False)
+        self.vendas_lojas = self.vendas_lojas.sort_values('SalesQuantity', ascending=False)
         self.vendas_lojas[:5].plot(figsize=(15,5), kind='bar')
         return self.vendas_lojas
 

@@ -1,9 +1,12 @@
-from LevantamentoDados import LevDados
-from conexao import ConexaoBD
+from ClassePlotagem import Plotagem
+import matplotlib.pyplot as plt
+
+
 def main():
-    busca = Levdados()
-    busca.analisar_vendas()
-    
-if __init__ == __main__:
+    busca = Plotagem()
+    busca.plotvl()
+    busca.plotvp()
+
+
+if __name__ == '__main__':
     main()
-    

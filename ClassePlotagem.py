@@ -1,9 +1,11 @@
-from ClasseAnalise import Analise
+from ClasseAnalise import Analisar
+import matplotlib.pyplot as plt
+
 
 # Classe para plotar os dados analisados
 class Plotagem:
     def __init__(self):
-        self.analise = Analise()
+        self.analise = Analisar()
 
     # Método para plotagem do gráfico de vendas/ loja
     def plotvl(self):
@@ -17,3 +19,4 @@ class Plotagem:
         vp.plot(kind='pie', figsize=(8,8), autopct='%1.1f%%', startangle=90)
         plt.axis('equal')
         plt.show()
+        self.conn.close()

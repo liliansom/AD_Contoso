@@ -1,19 +1,17 @@
 from IPython.display import display
 import pandas as pd
-import matplotlib.pyplot as plt
 from pandas.io import sql
 import pyodbc
 from conexao import ConexaoBD
-from ClasseAnalise import Analise
 
 
-# Classe para buscar informações no Banco de Dados
+# Classe para integração com Banco de Dados e busca de informações
 class Busca:
     def __init__(self):
         self.con = ConexaoBD()
         self.conn = self.con.conexao()
     
-    # Método para fazer busca de vendas no banco de dados
+    # Método para fazer levantamento de informações de vendas no banco de dados
     def buscar_vendas(self): 
         self.vendas = 'SELECT * FROM FactSales'
         self.dados_vendas = pd.read_sql(self.vendas, self.conn)
@@ -26,8 +24,7 @@ class Busca:
         self.lojas = 'SELECT * FROM DimStore'
         self.dados_lojas = pd.read_sql(self.lojas, self.conn)
         lista_colunas_lojas = ['StoreKey', 'StoreName']
-        tabela_lojas = self.dados_lojas[lista_colunas_lojas]
-        self.conn.close()   
+        tabela_lojas = self.dados_lojas[lista_colunas_lojas] 
         return tabela_lojas         
 
     # Método para fazer busca de produtos no banco de dados
@@ -42,8 +39,7 @@ class Busca:
         lista_colunas_subcat = ['ProductSubcategoryKey', 'ProductSubcategoryName']
         self.tabela_subcat = self.dados_subcat[lista_colunas_subcat]
 
-        tabela_prodcat = self.mesclar_tabelas(self.lista_produtos, self.lista_subcat, 'ProductSubcategoryKey')
-        self.conn.close()   
+        tabela_prodcat = self.mesclar_tabelas(self.tabela_produtos, self.tabela_subcat, 'ProductSubcategoryKey')
         return tabela_prodcat
 
     #Método para mesclar tabelas
@@ -51,8 +47,7 @@ class Busca:
         self.tabela1 = tabela1
         self.tabela2 = tabela2
         self.parametro = parametro
-        nova_tabela = tabela1.merge(tabela2, on=parametro)
-        self.conn.close()           
+        nova_tabela = tabela1.merge(tabela2, on=parametro)        
         return nova_tabela
 
 
