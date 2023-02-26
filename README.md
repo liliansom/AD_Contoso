@@ -27,7 +27,7 @@ Devido ao Banco de Dados ser extenso, o programa demorará alguns minutos para g
 Não se assuste com a demora! :)
 
 ## Esboço do projeto
-
+<img width="839" alt="Layout" src="https://user-images.githubusercontent.com/109561962/221394230-27aaa712-a4bd-4553-a1ef-d264f4e62242.png">
 
 ## FAQ
 Você possui alguma dúvida ou sugestão de melhorias?<br>
