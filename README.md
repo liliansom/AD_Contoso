@@ -21,6 +21,7 @@ Através deste projeto você poderá criar dois gráficos da Empresa fictícia C
 <li> Um gráfico de barra com as informações das cinco primeiras lojas com maior número de vendas </li>
 <li>Um gráfico de pizza com as subcategorias de produtos com a maior porcentagem de vendas.</li>
 Clone este repositório e dê "run" em main.py!<br>
+Para o programa conseguir gerar o segundo gráfico é necessário que seja fechado o primeiro.<br>
 
 Atenção! <br>
 Devido ao Banco de Dados ser extenso, o programa demorará alguns minutos para gerar o gráfico.<br> 
