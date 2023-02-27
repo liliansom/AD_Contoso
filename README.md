@@ -1,11 +1,11 @@
-# Apresentaçao
+# Apresentação
 Este realizado para Mentoria CSV e consiste em um projeto para análise de dados de uma empresa fictícia (Contoso) utilizando Python e SQL Server.
 Este projeto irá analisar alguns dados da Empresa fictícia Contoso realizando integração com o Banco de Dados e entregando gráficos em sua apresentação.
 
 Para a construção deste projeto foram utilizados os seguintes recursos:<br>
 VSCode, é um editor de código redefinido e otimizado para criar e depurar aplicativos modernos da Web e da nuvem, https://code.visualstudio.com/download;<br>
 Python 3.10.10, https://www.python.org/downloads/windows/;<br>
-Bibliotecas pandas, matplotlib, pyodbc e IPython do Python;
+Bibliotecas pandas, matplotlib, pyodbc e IPython do Python;<br>
 Banco de Dados Contoso, https://www.microsoft.com/en-us/download/details.aspx?id=18279;<br>
 <p>Atenção! Selecionar o idioma e apertar em download. 
 Escolher o arquivo nomeado "ContosoBIdemoBAK.exe". Instale o arquivo em seu Disco Local (C:).</p>

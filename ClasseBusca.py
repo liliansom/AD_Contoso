@@ -50,4 +50,3 @@ class Busca:
         nova_tabela = tabela1.merge(tabela2, on=parametro)        
         return nova_tabela
 
-
