@@ -29,16 +29,19 @@ class Busca:
 
     # Método para fazer busca de produtos no banco de dados
     def buscar_produtos(self):
+        # Buscando tabela de produtos
         self.produtos = 'SELECT * FROM DimProduct'
         self.dados_produtos = pd.read_sql(self.produtos, self.conn)
         lista_colunas_produtos = ['ProductKey', 'ProductSubcategoryKey']
         self.tabela_produtos = self.dados_produtos[lista_colunas_produtos]
-
+        
+        # Buscando a tabela de subcategorias de produtos 
         self.subcat = 'SELECT * FROM  DimProductSubCategory'
         self.dados_subcat = pd.read_sql(self.subcat, self.conn)
         lista_colunas_subcat = ['ProductSubcategoryKey', 'ProductSubcategoryName']
         self.tabela_subcat = self.dados_subcat[lista_colunas_subcat]
-
+        
+        # Mesclando as duas tabelas
         tabela_prodcat = self.mesclar_tabelas(self.tabela_produtos, self.tabela_subcat, 'ProductSubcategoryKey')
         return tabela_prodcat
 
