@@ -10,6 +10,7 @@ class Plotagem:
     # Método para plotagem do gráfico de vendas/ loja
     def plotvl(self):
         vl = self.analise.analisar_vendas()
+        self.vendas_lojas[:5].plot(figsize=(15,5), kind='bar')
         plt.xticks(rotation=350)
         plt.show()
 
