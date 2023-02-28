@@ -36,5 +36,4 @@ Por favor, entre em contato comigo!<br>
 Estou disponível para avaliar e implementar  melhorias no programa!<br>
 
 ## Progresso
-Em andamento.<br>
-Data de Entrega: 28/02/2023 <br>
+Entregue.<br>
