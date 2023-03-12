@@ -1,5 +1,5 @@
 # Apresentação
-Este realizado para Mentoria CSV e consiste em um projeto para análise de dados de uma empresa fictícia (Contoso) utilizando Python e SQL Server.
+Este projeto consiste em uma análise de dados de uma empresa fictícia (Contoso) utilizando Python e SQL Server.
 Este projeto irá analisar alguns dados da Empresa fictícia Contoso realizando integração com o Banco de Dados e entregando gráficos em sua apresentação.
 
 Para a construção deste projeto foram utilizados os seguintes recursos:<br>
